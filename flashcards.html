@@ -3,6 +3,7 @@
   <head>
     <title>Google Sheets API Quickstart</title>
     <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style/flashcards.css">
   </head>
   <body>
@@ -11,6 +12,7 @@
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize-button" style="display: none;">Authorize</button>
     <button id="signout-button" style="display: none;">Sign Out</button>
+    <!-- <button onclick="testMode()" id="test-mode">Test</button> -->
     <div class="flashcard-container"></div>
     <!-- <pre id="content"></pre> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -110,11 +112,12 @@
        */
       function listFlashcards() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1LqpqjqSFF_wqj8CVSrcw50gC0VTfJJwz3vIln3ctQnM',
+          //ET 2 spreadsheetId: '1LqpqjqSFF_wqj8CVSrcw50gC0VTfJJwz3vIln3ctQnM',
+          spreadsheetId: '1BM6OatEmHnZDN-uolI1qqn9kSHzzsBDVAEpHPOvwvzI',
           range: 'Sheet1!A1:B',
         }).then(function(response) {
           var range = response.result;
-          console.log(range);
+          // console.log(range);
           if (range.values.length > 0) {
             // appendCard('Reference, Verse:');
             for (i = 0; i < range.values.length; i++) {
@@ -130,6 +133,24 @@
           console.log('Error: ' + response.result.error.message);
         });
       }
+
+      $( document ).ready(function() {
+        console.log("doc ready");
+        $('body').on('click', '.flashcard', function(){
+          // console.log("onclick")
+          $(".subtitle").toggle();
+        })
+      })
+      // $('.subtitle').addEventListener("test-mode",hide,false);
+
+      // function testMode() {
+      //   var startTestMode = new Event('test-mode');
+      //   $("#test-mode").dispatchEvent(startTestMode);
+      // }
+
+      // function hide() {
+      //   this.hide();
+      // }
 
     </script>
 
