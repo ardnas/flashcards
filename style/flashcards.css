@@ -1,3 +1,16 @@
+html{
+  background-color: #96cece;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body{
+  margin:0px;
+}
+
+.button-container{
+  margin: 5px;
+}
+
 .flashcard-container{
   display:flex;
   flex-wrap:wrap;
@@ -5,19 +18,46 @@
   height: 100vh;
   justify-content:center;
   align-items: center;
-  align-content:center;
+  align-content:flex-start;
+  margin: 10px 0px;
 }
+
+.flashcard-wrapper{
+  position: relative;
+}
+
 .flashcard{
-  border: 1px solid black;
+  box-shadow: 0px 2px 2px #9E9E9E;
   padding: 20px;
-/*   margin:2px; */
+  margin: 2px;
   width: 350px;
   height:180px;
   box-sizing:border-box;
-/*   overflow-y:scroll; */
+  /*   overflow-y:scroll; */
+  background-color: rgb(255, 238, 173);
+  border-radius: 4px;
+  color: #212121;
+  position: relative;
 }
+
+.title{
+  font-family: Helvetica;
+  text-transform: uppercase;
+}
+
 .subtitle{
-/*   border: 1px solid red; */
   height: 120px;
   overflow-y: scroll;
+  font-family: Minion;
+  /* color: #212121; */
+}
+
+/*nice red #f5aea7*/
+
+.star{
+  width: 20px;
+  padding: 10px;
+  top: 0px;
+  position: absolute;
+  right:0px;
 }

@@ -1,3 +1,4 @@
+
 // Client ID and API key from the Developer Console
 var CLIENT_ID = '179033791357-n7ibolgj4ha87fc0mqs8odiiednq1q12.apps.googleusercontent.com';
 
@@ -69,9 +70,10 @@ function handleSignoutClick(event) {
 
 
 function appendCard(order,title, subtitle) {
-  $('.flashcard-container').append("<div class='flashcard' id="+order+" style='order:"+order+";'></div>")
-  $('.flashcard:last-child').append("<div class='title'>"+title+"</div>")
-  $('.flashcard:last-child').append("<div class='subtitle'>"+subtitle+"</div>")
+  $('.flashcard-container').append("<div class='flashcard-wrapper' id="+order+" style='order:"+order+";'><div class='flashcard'><div class='title'>"+title+"</div><div class='subtitle'>"+subtitle+"</div></div><img class='star' src='assets/noun_5432_cc.svg'></div>")
+  // $('.flashcard:last-child').append("<div class='title'>"+title+"</div>")
+  // $('.flashcard:last-child').append("<div class='subtitle'>"+subtitle+"</div>")
+  // $('.flashcard:last-child').append("<img class='star' src='assets/noun_5432_cc.svg'></div>")
 }     
 
 function listFlashcards() {
@@ -121,7 +123,7 @@ function shuffle(array) {
 
 function shuffleCards(){
   var shuffledArray = shuffle(numCardsArray);
-  $('.flashcard').each(function(index){
+  $('.flashcard-wrapper').each(function(index){
     $( this ).css('order', shuffledArray[index]);
   });
 }
@@ -143,4 +145,8 @@ $( document ).ready(function() {
   $('body').on('click', '.flashcard', function(){
     $('.subtitle', this ).toggle();
   })
-})
+  $('body').on('click','img.star', function(){
+    $( this ).prev('.flashcard').css('background-color','#f5aea7');
+  })
+});
+
